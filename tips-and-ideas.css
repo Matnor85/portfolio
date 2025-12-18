@@ -1,0 +1,490 @@
+/* =========================================
+   TIPS OCH IDÉER FÖR DIN PORTFOLIO
+   =========================================
+   
+   Denna fil innehåller förslag och exempel på hur du kan förbättra din portfolio.
+   Du kan kopiera delar av denna kod till din style.css eller använda som inspiration.
+*/
+
+/* ===== 1. AVANCERADE ANIMATIONER ===== */
+
+/* Fade in animation för sektioner när de skrollas in i viewport 
+   (kräver JavaScript för att lägga till klasser dynamiskt) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover-effekt för projekt-kort med mer dramatisk transformation */
+.project-card-advanced {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card-advanced:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Pulse animation för CTA-knappar */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.cta-pulse {
+    animation: pulse 2s infinite;
+}
+
+/* ===== 2. DARK MODE ===== */
+
+/* Dark mode variabler - kan aktiveras med JavaScript genom att lägga till class="dark-mode" på body */
+body.dark-mode {
+    --primary-color: #60a5fa;
+    --secondary-color: #3b82f6;
+    --text-color: #f9fafb;
+    --text-light: #d1d5db;
+    --background: #111827;
+    --background-alt: #1f2937;
+    --border-color: #374151;
+}
+
+/* Toggle knapp för dark mode */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dark-mode-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+}
+
+/* ===== 3. FÖRBÄTTRAD NAVIGATION ===== */
+
+/* Hamburgermeny för mobil (kräver JavaScript) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        flex-direction: column;
+        background: var(--background);
+        width: 100%;
+        padding: 2rem;
+        transition: right 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+}
+
+/* Progressbar som visar scroll-position */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    z-index: 9999;
+    transition: width 0.2s ease;
+}
+
+/* ===== 4. INTERAKTIVA ELEMENT ===== */
+
+/* Typing animation för hero text (kräver JavaScript) */
+.typing-effect::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Particle bakgrund för hero sektion (kräver JavaScript library som particles.js) */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* ===== 5. SKILL BARS MED ANIMATIONER ===== */
+
+/* Visuella skill bars istället för listor */
+.skill-bar-container {
+    margin-bottom: 1.5rem;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.skill-bar {
+    height: 10px;
+    background: var(--background-alt);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    transition: width 1s ease;
+}
+
+/* Exempel:
+<div class="skill-bar-container">
+    <div class="skill-name">
+        <span>HTML/CSS</span>
+        <span>90%</span>
+    </div>
+    <div class="skill-bar">
+        <div class="skill-progress" style="width: 90%"></div>
+    </div>
+</div>
+*/
+
+/* ===== 6. KONTAKTFORMULÄR ===== */
+
+/* Stilad kontaktformulär istället för bara länkar */
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* ===== 7. MODAL/LIGHTBOX FÖR PROJEKT ===== */
+
+/* Modal för att visa projekt i fullskärm */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* ===== 8. TIMELINE FÖR ERFARENHET/UTBILDNING ===== */
+
+/* Visuell timeline för att visa arbetslivserfarenhet eller utbildning */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    width: 45%;
+}
+
+.timeline-item:nth-child(odd) {
+    margin-left: auto;
+    padding-left: 2rem;
+}
+
+.timeline-item:nth-child(even) {
+    padding-right: 2rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    top: 0;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    left: -10px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    right: -10px;
+}
+
+/* ===== 9. SMOOTH SCROLL INDICATORS ===== */
+
+/* Scroll indicator i hero sektion */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* ===== 10. SOCIAL MEDIA IKONER ===== */
+
+/* Stilade social media länkar (använd Font Awesome eller liknande för ikoner) */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== JAVASCRIPT INTEGRATIONS FÖRSLAG ===== */
+
+/*
+1. SCROLL ANIMATIONER:
+   - Använd Intersection Observer API för att animera element när de scrollas in
+   - Exempel library: AOS (Animate On Scroll)
+
+2. TYPING EFFEKT:
+   - Typed.js för typing animation i hero sektion
+
+3. SMOOTH SCROLL:
+   - Redan implementerat med CSS, men kan förbättras med JavaScript
+
+4. PARTICLES BAKGRUND:
+   - particles.js för interaktiv bakgrund i hero
+
+5. FILTER/SORTERING AV PROJEKT:
+   - JavaScript för att filtrera projekt baserat på kategori/teknologi
+
+6. LAZY LOADING:
+   - Lazy load bilder för bättre prestanda
+
+7. FORM VALIDERING:
+   - JavaScript för att validera kontaktformulär
+
+8. DARK MODE TOGGLE:
+   - JavaScript för att toggla mellan ljust och mörkt tema
+
+9. PRELOADER:
+   - Loading animation medan sidan laddas
+
+10. SCROLL PROGRESS BAR:
+    - Visa scroll progress längst upp på sidan
+
+Exempel JavaScript för scroll animation:
+
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(element => {
+    observer.observe(element);
+});
+
+*/
+
+/* ===== EXTRA TIPS ===== */
+
+/*
+FÄRGPALETTER ATT PROVA:
+1. Blå/Lila (nuvarande): #667eea, #764ba2
+2. Grön/Blå: #11998e, #38ef7d
+3. Orange/Rosa: #fa709a, #fee140
+4. Mörkblå/Cyan: #1e3c72, #2a5298
+5. Röd/Orange: #ee0979, #ff6a00
+
+TYPSNITT KOMBINATIONER:
+1. Playfair Display + Source Sans Pro
+2. Montserrat + Open Sans
+3. Roboto Slab + Roboto
+4. Lora + Lato
+5. Poppins + Inter
+
+LAYOUT IDÉER:
+- Parallax scrolling
+- Full-page scrolling (som Fullpage.js)
+- Split screen layout
+- Masonry grid för projekt
+- Infinite scroll
+- Sticky sidebar navigation
+
+EXTRA SEKTIONER ATT ÖVERVÄGA:
+- Testimonials/Rekommendationer
+- Blog
+- Certifieringar
+- Awards/Utmärkelser
+- Process/Arbetssätt
+- FAQ
+
+PRESTANDA TIPS:
+- Optimera bilder (använd WebP format)
+- Minifiera CSS/JS
+- Använd CDN för libraries
+- Lazy loading för bilder
+- Critical CSS inline
+- Service Worker för offline funktionalitet
+*/
