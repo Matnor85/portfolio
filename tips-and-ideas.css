@@ -8,7 +8,7 @@
 
 /* ===== 1. AVANCERADE ANIMATIONER ===== */
 
-/* Fade in animation för sektioner när de scrollas in i viewport 
+/* Fade in animation för sektioner när de skrollas in i viewport 
    (kräver JavaScript för att lägga till klasser dynamiskt) */
 .fade-in {
     opacity: 0;
